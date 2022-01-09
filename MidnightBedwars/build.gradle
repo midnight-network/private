@@ -1,0 +1,14 @@
+plugins {
+    id 'java'
+}
+
+group 'net.midnightmc.bedwars'
+version 'unspecified'
+
+repositories {
+
+}
+
+dependencies {
+
+}

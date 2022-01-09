@@ -1,0 +1,14 @@
+plugins {
+    id 'java'
+}
+
+group 'net.midnightmc.pvp'
+version 'unspecified'
+
+repositories {
+
+}
+
+dependencies {
+
+}

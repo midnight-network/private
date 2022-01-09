@@ -1,0 +1,25 @@
+plugins {
+    id "com.github.johnrengelman.shadow"
+}
+
+group 'net.midnightmc.proxy'
+version 'unspecified'
+
+repositories {
+    mavenCentral()
+    maven {
+        url "https://nexus.velocitypowered.com/repository/maven-public/"
+    }
+    maven {
+        url "https://m2.dv8tion.net/releases"
+    }
+}
+
+dependencies {
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+    shadow 'org.projectlombok:lombok:1.18.22'
+    shadow 'com.velocitypowered:velocity-api:3.1.0'
+    annotationProcessor 'com.velocitypowered:velocity-api:3.1.0'
+    implementation 'net.dv8tion:JDA:4.3.0_277'
+    implementation('org.awaitility:awaitility-groovy:4.1.1')
+}

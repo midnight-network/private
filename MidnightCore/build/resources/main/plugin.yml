@@ -1,0 +1,16 @@
+main: net.midnightmc.core.MidnightCorePlugin
+name: MidnightCore
+version: 1.0
+api-version: 1.17
+load: STARTUP
+depend:
+  - Vault
+softdepend:
+  - FastAsyncWorldEdit
+libraries:
+  - fr.mrmicky:fastboard:1.2.0
+  - com.zaxxer:HikariCP:5.0.0
+  - org.mariadb.jdbc:mariadb-java-client:2.7.4
+  - dev.morphia.morphia:morphia-core:2.2.3
+  - commons-io:commons-io:2.11.0
+  - com.google.code.gson:gson:2.8.9

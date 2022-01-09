@@ -1,0 +1,66 @@
+plugins {
+    id "java"
+    id "com.github.johnrengelman.shadow" version '7.1.2'
+}
+
+allprojects {
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
+        compileJava.options.setEncoding('UTF-8')
+    }
+}
+
+subprojects {
+    apply plugin: 'java'
+    jar {
+        getDestinationDirectory().fileValue(new File(rootProject.projectDir, 'jars/'))
+    }
+    pluginManager.withPlugin("com.github.johnrengelman.shadow") {
+        apply plugin: 'com.github.johnrengelman.shadow'
+        jar {
+            destinationDirectory = null
+        }
+        shadowJar {
+            destinationDirectory.fileValue(new File(rootProject.getProjectDir(), "jars/"))
+            setArchiveClassifier("")
+            setArchiveClassifier("")
+            configurations = [project.configurations.runtimeClasspath]
+        }
+    }
+
+    if (project.name == "MidnightProxy") {
+        return
+    }
+    repositories {
+        mavenCentral()
+        maven { url = "https://papermc.io/repo/repository/maven-public/" }
+        maven {
+            name = "IntellectualSites Releases"
+            url = uri("https://mvn.intellectualsites.com/content/repositories/releases/")
+        }
+        maven { url = "https://repo.citizensnpcs.co/" }
+        maven { url = "https://jitpack.io" }
+        maven { url = "https://repo.dmulloy2.net/repository/public/" }
+    }
+    dependencies {
+        if (project.name != "MidnightCore") {
+            compileOnly(project(path: ":MidnightCore", configuration: "shadow"))
+        }
+        compileOnly("io.papermc.paper:paper-api:1.17.1-R0.1-SNAPSHOT")
+        annotationProcessor("org.projectlombok:lombok:1.18.22")
+        compileOnly group: "com.comphenix.protocol", name: "ProtocolLib", version: "4.7.0"
+        compileOnly("org.projectlombok:lombok:1.18.22")
+        compileOnly("com.github.MilkBowl:VaultAPI:1.7") //Vault
+        compileOnly("fr.mrmicky:fastboard:1.2.0") //FastBoard
+        compileOnly("com.zaxxer:HikariCP:5.0.0") //HikariCP
+        compileOnly("org.mariadb.jdbc:mariadb-java-client:2.7.4") //MariaDB
+        compileOnly("dev.morphia.morphia:morphia-core:2.2.3") //Morphia
+        compileOnly("commons-io:commons-io:2.11.0") //Apache-Commons
+        compileOnly("software.amazon.awssdk:bom:2.17.81") //AWS
+        compileOnly("software.amazon.awssdk:s3:2.17.99") //AWS-S3
+        compileOnly("com.fastasyncworldedit:FastAsyncWorldEdit-Core:1.17-375") //FAWE
+        compileOnly("com.fastasyncworldedit:FastAsyncWorldEdit-Bukkit:1.17-375") //FAWE-Bukkit
+        compileOnly("net.citizensnpcs:citizens-main:2.0.28-SNAPSHOT")
+        compileOnly("com.google.code.gson:gson:2.8.9") //GSON
+    }
+}

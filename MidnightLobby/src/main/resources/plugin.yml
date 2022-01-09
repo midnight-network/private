@@ -1,0 +1,7 @@
+main: net.midnightmc.lobby.MidnightLobby
+name: MidnightLobby
+version: 1.0
+api-version: 1.17
+depend:
+  - MidnightCore
+  - Vault

@@ -1,0 +1,7 @@
+main: net.midnightmc.bedwars.BedwarsPlugin
+name: MidnightBedwars
+version: 1.0
+api-version: 1.17
+softdepend:
+  - MidnightCore
+  - ProtocolLib

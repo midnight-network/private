@@ -1,0 +1,14 @@
+plugins {
+    id 'java'
+}
+
+group 'net.midnightmc.lobby'
+version 'unspecified'
+
+repositories {
+
+}
+
+dependencies {
+
+}
